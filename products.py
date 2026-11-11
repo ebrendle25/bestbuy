@@ -41,6 +41,7 @@ class Product:
         self.quantity = quantity
         self.active = True
 
+
     def get_quantity(self) -> int:
         """Return the current stock of the product."""
         return self.quantity
@@ -113,6 +114,10 @@ class Product:
 
 
 def main():
+    """
+    Main function to demonstrate the functionality of the Product class.
+    """
+    
     bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)
 
@@ -127,4 +132,5 @@ def main():
     bose.show()    
 
 if __name__ == "__main__":
+    # Main entry point for the Product class demonstration.
     main()  
