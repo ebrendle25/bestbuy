@@ -1,3 +1,6 @@
+"""Product class for representing items in the store."""
+
+
 class Product:
     """
     Represents a product in the store.
@@ -35,12 +38,11 @@ class Product:
             raise ValueError("Quantity cannot be negative")
         if len(name.strip()) == 0:
             raise ValueError("Name cannot be empty or whitespace")
-        
+
         self.name = name
         self.price = price
         self.quantity = quantity
         self.active = True
-
 
     def get_quantity(self) -> int:
         """Return the current stock of the product."""
@@ -80,7 +82,7 @@ class Product:
 
     def show(self):
         """Print a string representation of the product to the console."""
-        print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
+        print(self)
 
     def buy(self, quantity) -> float:
         """
@@ -106,18 +108,21 @@ class Product:
             raise ValueError("Quantity must be greater than zero")
         if quantity > self.quantity:
             raise ValueError("Not enough stock available")
-        
+
         total_price = self.price * quantity
         self.set_quantity(self.quantity - quantity)
         return total_price
 
+    def __str__(self) -> str:
+        """Return a string representation of the product."""
+        return f"{self.name}, Price: ${self.price}, Quantity: {self.quantity}"
 
 
 def main():
     """
     Main function to demonstrate the functionality of the Product class.
     """
-    
+
     bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)
 
@@ -129,8 +134,9 @@ def main():
     mac.show()
 
     bose.set_quantity(1000)
-    bose.show()    
+    bose.show()
+
 
 if __name__ == "__main__":
     # Main entry point for the Product class demonstration.
-    main()  
+    main()
